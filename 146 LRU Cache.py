@@ -20,7 +20,9 @@ class LRUCache:
         self.store[key] = value
         
         
-
+x = ["1","2","-7","15","300"]
+y = sorted(x)
+print("y:",y)
 #Implementation detail of line 19: To iterate the dictionary keys, I chose to use a generator object 
 # to simply generate a single key: next(iter(self.cache)), which is equivalent to list(self.cache.keys())[0] or self.cache.items()[0][0]. 
 # The reason behind doing this is because we can avoid a little bit of overhead required to generate a whole list of keys,
