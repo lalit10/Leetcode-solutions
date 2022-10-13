@@ -69,5 +69,5 @@ class Solution:
 #         # and left nodes on the last level.
 #         return (2**d - 1) + left
 
-#Time complexity: O(d^2) = O(logn^2)
-#Space complexity: O(1)
+# Time complexity: O(d^2) = O(logn^2)
+# Space complexity: O(1)
