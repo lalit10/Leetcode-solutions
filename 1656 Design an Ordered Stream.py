@@ -11,7 +11,6 @@ class OrderedStream:
             result.append(self.stream[self.ptr]) #Append stream of that pointer to result
             self.ptr += 1 #Increment pointer
         return result
-        
 
 
 # Your OrderedStream object will be instantiated and called as such:
