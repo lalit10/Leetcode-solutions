@@ -29,4 +29,17 @@ class Solution:
         return result
         
         
-        
+#Another solution:
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:        
+        #Using minheap to store endTimes
+        intervals.sort(key = lambda x:x[0])
+        rooms = []
+        heapq.heappush(rooms, intervals[0][1])
+        for i in intervals[1:]:
+            if rooms[0] <= i[0]:
+                heapq.heapreplace(rooms, i[1])
+            else:
+                heapq.heappush(rooms,i[1])
+        return len(rooms)
+
