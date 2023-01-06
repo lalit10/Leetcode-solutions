@@ -17,12 +17,10 @@ class LRUCache:
         else:
             if len(self.store) == self.capacity:
                 del self.store[next(iter(self.store))]     #Delete the first element
+                #https://stackoverflow.com/questions/1756992/how-to-remove-the-oldest-element-from-a-dictionary
         self.store[key] = value
         
         
-x = ["1","2","-7","15","300"]
-y = sorted(x)
-print("y:",y)
 #Implementation detail of line 19: To iterate the dictionary keys, I chose to use a generator object 
 # to simply generate a single key: next(iter(self.cache)), which is equivalent to list(self.cache.keys())[0] or self.cache.items()[0][0]. 
 # The reason behind doing this is because we can avoid a little bit of overhead required to generate a whole list of keys,
@@ -42,23 +40,23 @@ print("y:",y)
 # The popitem() method for ordered dictionaries returns and removes a (key, value) pair.
 # The pairs are returned in LIFO order if last is true or FIFO order if false.
 
-# from collections import OrderedDict
+from collections import OrderedDict
 
-# class LRUCache:
-#     def __init__(self, capacity: int):
-#         self.cap = capacity
-#         self.dict = OrderedDict()
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cap = capacity
+        self.dict = OrderedDict()
 
-#     def get(self, key: int) -> int:
-#         if key not in self.dict:
-#             return -1
-#         self.dict.move_to_end(key)
-#         return self.dict[key]
+    def get(self, key: int) -> int:
+        if key not in self.dict:
+            return -1
+        self.dict.move_to_end(key)
+        return self.dict[key]
 
-#     def put(self, key: int, value: int) -> None:
-#         if key in self.dict:
-#             self.dict.pop(key)
+    def put(self, key: int, value: int) -> None:
+        if key in self.dict:
+            self.dict.pop(key)
             
-#         self.dict[key] = value
-#         if len(self.dict) > self.cap:
-#             self.dict.popitem(last=False) 
+        self.dict[key] = value
+        if len(self.dict) > self.cap:
+            self.dict.popitem(last=False) 
