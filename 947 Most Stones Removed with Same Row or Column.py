@@ -2,32 +2,35 @@ from collections import deque,defaultdict
 class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         #BFS
+        #Two graphs for x and y each
+        #Check in x or in y
         
-        store_x = defaultdict(list)
-        store_y = defaultdict(list)
-        
+        graph_x = defaultdict(list)
+        graph_y = defaultdict(list)
+
         visited = set()
 
         for x,y in stones:
-            store_x[x].append(y)
-            store_y[y].append(x)
-        
-        shared_components = 0
-        
+            graph_x[x].append(y)
+            graph_y[y].append(x)
+
+        result = 0
+
         for x,y in stones:
-            
+
             if (x,y) not in visited:
                 que = deque([(x,y)])
                 while que:
                     xx,yy = que.popleft()
                     
-                    if(xx,yy) not in visited:
+                    if (xx,yy) not in visited:
                         visited.add((xx,yy))
-                        for nei in store_x[xx]:
+                        for nei in graph_x[xx]:
                             que.append((xx,nei))
-                        for nei in store_y[yy]:
-                            que.append((nei,y))
-                shared_components +=1
-        
-        return len(stones) - shared_components
+                        for nei in graph_y[yy]:
+                            que.append((nei,yy))
+                result+=1        
+        return len(stones) - result
 
+# Time Complexity: O(N) where N is the number of stones
+# Space Complexity: O(N)
