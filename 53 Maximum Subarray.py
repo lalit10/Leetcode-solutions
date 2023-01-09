@@ -12,5 +12,8 @@ class Solution:
             maxSum = max(maxSum, curSum)
 
         return maxSum
+
+# Time Complexity: O(N)
+# Space Complexity: O(1)
         
         
