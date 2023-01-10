@@ -18,6 +18,8 @@ def lengthOfLongestSubstring(self, s: str) -> int:
             max_length = max(length, max_length)
         
         return max_length
+# Time Complexity: O(N)
+# Space Complexity: O(N)
 
 #Another solution:
 
